@@ -11,12 +11,14 @@
     <title>Document</title>
 </head>
 
-<body data-count="1">
+<body data-count="0">
     <div class="container">
         <nav>
             <div class="logo">
                 <img src="image/Logo.png" alt="">
-
+            </div>
+            <div class="hamburger">
+                <i class='bx bx-menu'></i>
             </div>
             <div class="nav-tems">
                 <ul>
@@ -37,7 +39,7 @@
                     Discover the Perfect Watch for Every Occasion and Elevate Your Style with Timeless Elegance and
                     Precision Craftsmanship - watch
                 </p>
-                <h1>$499.00</h1>
+                <h1 class="price">$499.00</h1>
                 <div class="socials">
                     <i class='bx bxl-facebook'></i>
                     <i class='bx bxl-twitter'></i>
@@ -47,15 +49,7 @@
             <div class="solo-watch-container">
                 <section class="splide" aria-label="Splide Basic HTML Example">
                     <div class="splide__track">
-                        <ul class="splide__list" data-ref="aman">
-                            <!-- <li class="splide__slide">
-                                <img src="./image/golden.png" alt="">
-                            </li>
-                            <li class="splide__slide">
-                                <img src="./image/white.png" alt="">
-                            </li>
-                            <li class="splide__slide"><img src="image/green.png" alt=""></li>
-                            <li class="splide__slide"><img src="image/red.png" alt=""></li> -->
+                        <ul class="splide__list" data-ref="ul">
                         </ul>
                     </div>
                 </section>
@@ -65,23 +59,23 @@
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script>
 
-        let myData = [];
+
         document.addEventListener('DOMContentLoaded', function () {
+            let myData = [];
             fetch("./data.json")
                 .then((data) =>
                     data.json()
                 )
                 .then(data => {
-                    myData = data;
+                    myData = data.slides
                     let str = '';
+                    console.log(myData)
                     data.slides.forEach(slide => {
-                        console.log(slide)
-                        str = str + ` <li class="splide__slide">
+                        str = str + `<li class="splide__slide">
                                 <img src=${slide.image_url.desktop_image_url} alt="">
                             </li>`
                     })
-                    document.querySelector('ul[data-ref="aman"]').innerHTML = str;
-                    /////////////////--------------------////////////
+                    document.querySelector('ul[data-ref="ul"]').innerHTML = str;
                     const splide = new Splide('.splide', {
                         perPage: 1,
                         perMove: 1,
@@ -90,35 +84,36 @@
                         pagination: false,
                         arrows: true,
                         padding: 23,
-                        focus: 0
+                        focus: 0,
                     });
 
                     const body = document.querySelector('body')
-                    let count = parseInt(body.dataset.count)
-                    let str2 = "count" + "-" + count;
-                    console.log(str2)
+                    let str2 = "count" + "-" + 0;
                     document.querySelector('body').className = ""
                     document.querySelector('body').classList.add(str2)
-                    body.dataset.count = count + 1;
-                    if (count >= 4) {
-                        body.dataset.count = 0
-                    }
-                    splide.on('move', function () {
+                    splide.on('move', function (a, b, c) {
+                        console.log(a, b, c)
                         const body = document.querySelector('body')
-                        let count = parseInt(body.dataset.count)
-                        let str = "count" + "-" + count;
+                        let str2 = "count" + "-" + a;
                         console.log(str2)
+                        setContent(a)
                         document.querySelector('body').className = ""
-                        document.querySelector('body').classList.add(str)
-                        body.dataset.count = count + 1;
-                        if (count >= 4) {
-                            body.dataset.count = 1
-                        }
+                        document.querySelector('body').classList.add(str2)
+                        document.querySelector('.top-big-head').innerHTML = myData[a].heading
+                        document.querySelector('.sub-heading').innerHTML = myData[a].sub_heading
+                        document.querySelector('.discription').innerHTML = myData[a].heading_description
+                        document.querySelector('.price').innerHTML = myData[a].price
+
                     });
-                    splide.mount();
+
+                    splide.mount(
+                        // {}, MyTransition
+                    );
+                    function setContent(a) {
+                        console.log("hello")
+                        console.log(myData[a])
+                    }
                 })
-
-
         });
     </script>
 </body>

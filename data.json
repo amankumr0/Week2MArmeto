@@ -4,7 +4,7 @@
     "auto_paly": "true",
     "slides": [
         {
-            "id": "1",
+            "id": "0",
             "name": "white",
             "image_url": {
                 "mobile_image_url": "./image/golden.png",
@@ -13,7 +13,7 @@
             "heading": "Exquisite Watches",
             "sub_heading": "Golden  Luxury,<span data-color='black'> Choose Us</span>",
             "heading_description": "Discover the Perfect Watch for Every Occasion and Elevate Your Style with Timeless Elegance and Precision Craftsmanship - watch",
-            "price": "$469",
+            "price": "$469.00",
             "background": "golden-gradient",
             "socials": {
                 "instagram": "#",
@@ -30,7 +30,7 @@
             },
             "heading": "Dainty Timepieces",
             "sub_heading": "Silver Luxury,<span data-color='black'> Choose Us</span>",
-            "heading_description": "Discover the Perfect Watch for Every Occasion and Elevate Your Style with Timeless Elegance and Precision Craftsmanship - watch",
+            "heading_description": "Explore the Ideal Timepiece for Any Moment and Enhance Your Style with Timeless Sophistication and Impeccable Craftsmanship - timepiece",
             "price": "$469.00",
             "background": "white-gradient",
             "socials": {
@@ -40,7 +40,7 @@
             }
         },
         {
-            "id": "1",
+            "id": "2",
             "name": "white",
             "image_url": {
                 "mobile_image_url": "./image/green.png",
@@ -50,6 +50,7 @@
             "sub_heading": "Choose  Luxury,<span data-color='black'> Choose Us</span>",
             "heading_description": "Discover the Perfect Watch for Every Occasion and Elevate Your Style with Timeless Elegance and Precision Craftsmanship - watch",
             "price": "$529.00",
+            "background": "green-gradient",
             "socials": {
                 "instagram": "#",
                 "twitter": "#",
@@ -57,7 +58,7 @@
             }
         },
         {
-            "id": "1",
+            "id": "3",
             "name": "white",
             "image_url": {
                 "mobile_image_url": "./image/red.png",
@@ -65,8 +66,9 @@
             },
             "heading": "Refined Timepieces",
             "sub_heading": "Choose Luxury,<span data-color='black'> Choose Us</span>",
-            "heading_description": "Discover the Perfect Watch for Every Occasion and Elevate Your Style with Timeless Elegance and Precision Craftsmanship - watch",
+            "heading_description": "Explore the Ideal Timepiece for Any Moment and Enhance Your Style with Timeless Sophistication and Impeccable Craftsmanship - timepiece",
             "price": "$599.00",
+            "background": "red-gradient",
             "socials": {
                 "instagram": "#",
                 "twitter": "#",
