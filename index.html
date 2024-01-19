@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Document</title>
+</head>
+
+<body data-count="1">
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <img src="image/Logo.png" alt="">
+
+            </div>
+            <div class="nav-tems">
+                <ul>
+                    <li>Shop</li>
+                    <li>Brands</li>
+                    <li>Contact us</li>
+                </ul>
+                <button>
+                    Sign up
+                </button>
+            </div>
+        </nav>
+        <div class="watch-container">
+            <div class="heading-container">
+                <h1 class="top-big-head">Exquisite Watches</h1>
+                <h3 class="sub-heading">Golden Luxury,<span>&nbsp;Choose US</span></h3>
+                <p class="discription">
+                    Discover the Perfect Watch for Every Occasion and Elevate Your Style with Timeless Elegance and
+                    Precision Craftsmanship - watch
+                </p>
+                <h1>$499.00</h1>
+                <div class="socials">
+                    <i class='bx bxl-facebook'></i>
+                    <i class='bx bxl-twitter'></i>
+                    <i class='bx bxl-youtube'></i>
+                </div>
+            </div>
+            <div class="solo-watch-container">
+                <section class="splide" aria-label="Splide Basic HTML Example">
+                    <div class="splide__track">
+                        <ul class="splide__list" data-ref="aman">
+                            <!-- <li class="splide__slide">
+                                <img src="./image/golden.png" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="./image/white.png" alt="">
+                            </li>
+                            <li class="splide__slide"><img src="image/green.png" alt=""></li>
+                            <li class="splide__slide"><img src="image/red.png" alt=""></li> -->
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script>
+
+        const myData = [];
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch("./data.json")
+                .then((data) =>
+                    data.json()
+                )
+                .then(data => {
+                    myData = data;
+                    let str = '';
+                    data.slides.forEach(slide => {
+                        console.log(slide)
+                        str = str + ` <li class="splide__slide">
+                                <img src=${slide.image_url.desktop_image_url} alt="">
+                            </li>`
+                    })
+                    document.querySelector('ul[data-ref="aman"]').innerHTML = str;
+                    /////////////////--------------------////////////
+                    const splide = new Splide('.splide', {
+                        perPage: 1,
+                        perMove: 1,
+                        arrows: true,
+                        type: 'loop',
+                        pagination: false,
+                        arrows: true,
+                        padding: 23,
+                        focus: 0
+                    });
+
+                    const body = document.querySelector('body')
+                    let count = parseInt(body.dataset.count)
+                    let str2 = "count" + "-" + count;
+                    console.log(str2)
+                    document.querySelector('body').className = ""
+                    document.querySelector('body').classList.add(str2)
+                    body.dataset.count = count + 1;
+                    if (count >= 4) {
+                        body.dataset.count = 0
+                    }
+                    splide.on('move', function () {
+                        const body = document.querySelector('body')
+                        let count = parseInt(body.dataset.count)
+                        let str = "count" + "-" + count;
+                        console.log(str2)
+                        document.querySelector('body').className = ""
+                        document.querySelector('body').classList.add(str)
+                        body.dataset.count = count + 1;
+                        if (count >= 4) {
+                            body.dataset.count = 1
+                        }
+                    });
+                    splide.mount();
+                })
+
+
+        });
+    </script>
+</body>
+
+</html>
